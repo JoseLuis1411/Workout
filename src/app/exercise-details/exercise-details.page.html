@@ -1,0 +1,35 @@
+<!-- src/app/exercise-details/exercise-details.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Exercise Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goBack()">Go back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="descripcion_card">
+    <ion-card-header>
+      <ion-card-title class="descripcion_title">{{ exercise?.name }}</ion-card-title>
+      <ion-img *ngIf="exercise?.image_url; else noImage" [src]="exercise.image_url"></ion-img>
+      <ng-template #noImage>
+        <ion-card-content>Imagen no disponible</ion-card-content>
+      </ng-template>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Equipo:</strong> {{ exercise?.equipment ? exercise.equipment: 'No especificado' }}</p>
+      <p><strong>Body Part:</strong> {{ exercise.bodyPart ? exercise.bodyPart : 'No especificado' }}</p>
+      <p><strong>Target:</strong> {{ exercise.target ? exercise.target : 'No especificado' }}</p>
+      <ion-img *ngIf="exercise?.image" [src]="exercise.image"></ion-img>
+      <p><strong>Secondary muscles: </strong></p>
+      <ol>
+        <li *ngFor="let muscle of exercise.secondaryMuscles">{{ muscle }}</li>
+      </ol>
+      <p><strong>Instrucciones:</strong></p>
+      <ol>
+        <li *ngFor="let step of exercise.instructions">{{ step }}</li>
+      </ol>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

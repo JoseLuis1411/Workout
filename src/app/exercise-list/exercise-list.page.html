@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Routine</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goBack()">Go back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Segmento para seleccionar el día de la semana -->
+  <div class="segment-container">
+    <ion-segment [(ngModel)]="selectedDay" (ionChange)="onDayChange()">
+      <ion-segment-button *ngFor="let day of daysOfWeek" [value]="day">
+        {{ day }}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Lista de ejercicios guardados para el día seleccionado -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let exercise of filteredExercises">
+        <ion-card>
+          <ion-img *ngIf="exercise?.image_url; else noImage" [src]="exercise.image_url"></ion-img>
+          <ng-template #noImage>
+            <ion-card-content>Imagen no disponible</ion-card-content>
+          </ng-template>
+          <ion-card-header class="ion-card-header">
+            <ion-card-title>{{ exercise.name }}</ion-card-title>
+            <ion-buttons>
+              <ion-button (click)="removeExercise(exercise)">
+                <ion-icon name="trash"></ion-icon> <!-- Icono de papelera -->
+              </ion-button>
+            </ion-buttons>
+          </ion-card-header>
+          <ion-card-content class="card_content">
+            <p>Equipment: {{ exercise.equipment || 'No especificado' }}</p>
+            <p>Body Part: {{ exercise.bodyPart || 'No especificado' }}</p>
+            <p>Target: {{ exercise.target || 'No especificado' }}</p>
+            <div class="boton_detalles">
+              <ion-button (click)="goToDetails(exercise)">More details</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Mensaje si no hay ejercicios guardados para el día seleccionado -->
+  <ion-text *ngIf="filteredExercises.length === 0" color="medium" class="ion-padding">
+    There are no saved exercises for {{ selectedDay }}.
+  </ion-text>
+</ion-content>

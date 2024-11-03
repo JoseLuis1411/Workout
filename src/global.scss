@@ -35,3 +35,75 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.custom-modal {
+    --width: 60%;
+    --border-radius: 10px;
+  }
+
+//para celular custom-modal al 100%
+@media (max-width: 600px) {
+    .custom-modal {
+      --width: 100%;
+    }
+
+    ion-searchbar{
+        --width: 30%;
+    }
+  }
+
+
+
+
+  ion-card{
+    border-radius: 15px;
+  }
+  
+  .ion-card-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ion-card-header ion-card-title{
+    font-size: 21px;
+    font-weight: bold;
+  }
+  
+  .ion-card-header ion-icon{
+    font-size: 30px;
+    color: white;
+  }
+  
+  .ion-card-header ion-button{
+    transition: .5s ease all;
+    border-radius: 10px;
+  }
+  
+  
+  .ion-card-header ion-button:hover{
+    background-color: rgb(64, 112, 243);
+  }
+  
+  
+  .boton_detalles{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .boton_detalles ion-button{
+    margin: 15px;
+    border-radius: 20px;
+  }
+  
+  .card_content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+    font-size: 17px;
+  }
+  
+  
+  

@@ -1,0 +1,19 @@
+.segment-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se muevan a la siguiente línea */
+    justify-content: center; /* Centra los botones horizontalmente */
+    padding: 10px; /* Agrega un poco de espaciado */
+  }
+  
+  ion-segment {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se acomoden en varias filas */
+    justify-content: center; /* Centra los botones */
+  }
+  
+  ion-segment-button {
+    flex: 1 1 100px; /* Permite que cada botón tenga un ancho flexible con un mínimo de 100px */
+    margin: 5px; /* Espaciado entre botones */
+    text-align: center; /* Centra el texto en cada botón */
+  }
+  

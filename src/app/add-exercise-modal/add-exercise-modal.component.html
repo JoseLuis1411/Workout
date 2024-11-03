@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add exercise</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="selectedDay">
+      <ion-item *ngFor="let day of daysOfWeek">
+        <ion-label>{{ day }}</ion-label>
+        <ion-radio slot="start" [value]="day"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <ion-button expand="full" (click)="addExercise(exercise, selectedDay)" [disabled]="!selectedDay">Add</ion-button>
+</ion-content>
