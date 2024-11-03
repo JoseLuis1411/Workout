@@ -2,6 +2,7 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ExerciseStorageService } from '../services/exercise-storage.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-exercise-modal',
@@ -26,8 +27,16 @@ export class AddExerciseModalComponent {
     // Guardar el ejercicio en el servicio
     await this.exerciseStorageService.saveExercise(exercise);
 
-    // Cerrar el modal después de guardar
     this.closeModal();
-    console.log('Ejercicio guardado:', exercise);
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Exercise added successfully!",
+      showConfirmButton: false,
+      timer: 1000,
+      customClass: {
+        popup: 'swal-custom-popup-front'
+      }
+    })
   }
 }

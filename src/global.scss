@@ -105,5 +105,8 @@
     font-size: 17px;
   }
   
-  
-  
+
+  .swal-custom-popup-front {
+    position: fixed !important;
+    z-index: 1050 !important; /* Asegúrate que sea más alto que otros elementos */
+  }
